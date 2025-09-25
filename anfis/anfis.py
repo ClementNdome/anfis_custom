@@ -6,7 +6,7 @@ Created on Thu Apr 03 07:30:34 2014
 """
 import itertools
 import numpy as np
-from membership import mfDerivs
+from .membership import mfDerivs
 import copy
 
 class ANFIS:
@@ -179,7 +179,7 @@ def forwardHalfPass(ANFISObj, Xs):
 
         #layer two
         miAlloc = [[layerOne[x][ANFISObj.rules[row][x]] for x in range(len(ANFISObj.rules[0]))] for row in range(len(ANFISObj.rules))]
-        layerTwo = np.array([np.product(x) for x in miAlloc]).T
+        layerTwo = np.array([np.prod(x) for x in miAlloc]).T
         if pattern == 0:
             w = layerTwo
         else:
